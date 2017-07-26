@@ -1,12 +1,9 @@
 package com.nnc.hughes.gpsshopper
 
-import android.content.Context
-import android.content.Intent
 import kotlinx.android.synthetic.main.activity_detail.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.nnc.hughes.gpsshopper.Models.Roster
-import android.widget.TextView
+import com.nnc.hughes.gpsshopper.data.Roster
 import com.squareup.picasso.Picasso
 
 class DetailActivity : AppCompatActivity() {

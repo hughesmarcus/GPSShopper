@@ -1,9 +1,9 @@
-package com.nnc.hughes.gpsshopper.Models;
+package com.nnc.hughes.gpsshopper.data;
 
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
+
 /**
  * Created by marcus on 7/26/17.
  */

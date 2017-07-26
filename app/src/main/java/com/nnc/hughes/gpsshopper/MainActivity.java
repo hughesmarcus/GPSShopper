@@ -1,32 +1,25 @@
 package com.nnc.hughes.gpsshopper;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.nnc.hughes.gpsshopper.Models.HockeyAPI;
-import com.nnc.hughes.gpsshopper.Models.JSONResponse;
-import com.nnc.hughes.gpsshopper.Models.Roster;
-import com.nnc.hughes.gpsshopper.DetailActivity;
+
+import com.nnc.hughes.gpsshopper.data.HockeyAPI;
+import com.nnc.hughes.gpsshopper.data.JSONResponse;
+import com.nnc.hughes.gpsshopper.data.Roster;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static java.security.AccessController.getContext;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,20 +34,34 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initViews();
     }
+
+
+
+    //
     private void initViews(){
         recyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                layoutManager.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
         loadJSON();
     }
+
+
+
+    //
     private void launch(Roster player){
 
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(PLAYER, player);
         startActivity(intent);
     }
+
+
+
+    //
     private void loadJSON(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://jc-xerxes.gpshopper.com")

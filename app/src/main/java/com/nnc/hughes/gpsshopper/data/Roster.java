@@ -1,11 +1,11 @@
-package com.nnc.hughes.gpsshopper.Models;
+package com.nnc.hughes.gpsshopper.data;
 
 /**
  * Created by marcus on 7/26/17.
  */
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -24,9 +24,7 @@ public class Roster implements Parcelable
     public final static Parcelable.Creator<Roster> CREATOR = new Creator<Roster>() {
 
 
-        @SuppressWarnings({
-                "unchecked"
-        })
+
         public Roster createFromParcel(Parcel in) {
             Roster instance = new Roster();
             instance.name = ((String) in.readValue((String.class.getClassLoader())));

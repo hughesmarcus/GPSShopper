@@ -12,34 +12,47 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nnc.hughes.gpsshopper.Models.Roster;
+import com.nnc.hughes.gpsshopper.data.Roster;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RosterAdapter extends RecyclerView.Adapter<RosterAdapter.ViewHolder> {
     private ArrayList<Roster> roster;
     private Context context;
+    private OnItemClickListener onItemClickListener;
     public RosterAdapter(Context context,ArrayList<Roster> roster) {
         this.context = context;
         this.roster = roster;
 
     }
-    private OnItemClickListener onItemClickListener;
+
+
+
+    //
     public OnItemClickListener getOnItemClickListener() {
         return onItemClickListener;
     }
 
+
+
+    //
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
+
+
+
+    //
     @Override
     public RosterAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, viewGroup, false);
         return new ViewHolder(view);
     }
 
+
+
+    //
     @Override
     public void onBindViewHolder(RosterAdapter.ViewHolder viewHolder, int i) {
         final Roster player = roster.get(i);
@@ -55,6 +68,9 @@ public class RosterAdapter extends RecyclerView.Adapter<RosterAdapter.ViewHolder
         viewHolder.mView.setOnClickListener(listener);
     }
 
+
+
+    //
     @Override
     public int getItemCount() {
         return roster.size();
@@ -64,6 +80,10 @@ public class RosterAdapter extends RecyclerView.Adapter<RosterAdapter.ViewHolder
         private TextView name,position;
         private ImageView picture;
         private View mView;
+
+
+
+        //
         public ViewHolder(View view) {
             super(view);
             mView = view;
